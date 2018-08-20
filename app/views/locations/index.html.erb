@@ -1,0 +1,96 @@
+
+
+<script>
+
+var locations = <%= @locations %>;
+
+function initMap() {
+  var myLatLng = {lat: 55, lng: 13};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 10,
+    center: myLatLng
+    });
+
+  // var count;
+
+  // for (count = 0; count < locations.length; count++) {
+  //   new google.maps.Marker({
+  //     position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+  //     map: map,
+  //     title: locations[count][0]
+  //     });
+  //  }
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+
+}
+
+</script>
+<style>
+  /* Always set the map height explicitly to define the size of the div
+   * element that contains the map. */
+  #map {
+    height: 60%;
+    width: 50%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.address %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+        <td><%= link_to 'Show', location %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_location_path %>
+<div id="map"></div>
+
+
+<script>
+
+// var locations = [
+//   ['Bondi Beach', -33.890542, 151.274856, 4],
+//   ['Coogee Beach', -33.923036, 151.259052, 5],
+//   ['Cronulla Beach', -34.028249, 151.157507, 3],
+//   ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+//   ['Maroubra Beach', -33.950198, 151.259302, 1]
+// ];
+
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnqFw6YprUwNgAsLDIh8g3Pt_xkhk99zI&callback=initMap">
+</script>
