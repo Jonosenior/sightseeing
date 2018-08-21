@@ -15,32 +15,29 @@
 
 
 function initMap() {
-  // var exampleLatLng = {gon.locations[1], lng: gon.locations[2]};
-  var myLatLng = {lat: 52.533803, lng: 13.398157};
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: myLatLng
-    });
+  var locations = [
+  	["The Tree", 52.533803, 13.398157],
+    ["Lalbela", 52.477319, 13.425223]
+  ]
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: new google.maps.LatLng(52.533803, 13.398157),
+  });
 
   var count;
 
-  for (count = 0; count < gon.locations.length; count++) {
-    new google.maps.Marker({
-      position: new google.maps.LatLng(gon.locations[count][1], gon.locations[count][2]),
+
+  for (count = 0; count < locations.length; count++) {
+  	new google.maps.Marker({
+    	position: new google.maps.LatLng(locations[count][1], 	locations[count][2]),
       map: map,
-      title: gon.locations[count][0]
+      title: locations[count][0]
       });
    }
 
-  var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'The Tree'
-  });
-
 }
-
 </script>
 <style>
   /* Always set the map height explicitly to define the size of the div
