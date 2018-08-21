@@ -5,6 +5,8 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
+    @l = Location.first
+    gon.locations = [@l.address, @l.latitude, @l.longitude, 1]
   end
 
   # GET /locations/1
