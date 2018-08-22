@@ -4,11 +4,8 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-
     @locations = Location.all
-    @l = Location.first
     @locations_pins = @locations.map { |l| [l.address, l.latitude, l.longitude] }
-    gon.locations = [@l.address, @l.latitude, @l.longitude, 1]
   end
 
   # GET /locations/1

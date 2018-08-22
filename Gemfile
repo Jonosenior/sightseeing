@@ -21,7 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'geocoder'
 gem 'pry'
-gem 'gon'
+gem "figaro"
+
 
 
 # Use CoffeeScript for .coffee assets and views
