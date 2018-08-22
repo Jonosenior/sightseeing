@@ -2,30 +2,6 @@
 
 </head>
 
-<script>
-
-function initMap() {
-
-  var locations = <%= raw @locations_pins %>;
-
-	var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    center: new google.maps.LatLng(52.533803, 13.398157),
-  });
-
-  var count;
-
-
-  for (count = 0; count < locations.length; count++) {
-  	new google.maps.Marker({
-    	position: new google.maps.LatLng(locations[count][1], 	locations[count][2]),
-      map: map,
-      title: locations[count][0]
-      });
-   }
-
-}
-</script>
 <style>
   /* Always set the map height explicitly to define the size of the div
    * element that contains the map. */
@@ -77,10 +53,27 @@ function initMap() {
 
 <script>
 
+function initMap() {
+
+  var locations = <%= raw @locations_pins %>;
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: new google.maps.LatLng(52.533803, 13.398157),
+  });
+
+  var count;
 
 
+  for (count = 0; count < locations.length; count++) {
+  	new google.maps.Marker({
+    	position: new google.maps.LatLng(locations[count][1], 	locations[count][2]),
+      map: map,
+      title: locations[count][0]
+      });
+   }
 
-
+}
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnqFw6YprUwNgAsLDIh8g3Pt_xkhk99zI&callback=initMap">
 </script>
